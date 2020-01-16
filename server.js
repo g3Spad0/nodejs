@@ -99,6 +99,20 @@ const server = new http.Server(function (request, response)
                 }
             });
         }
+        else if (query.pathname == '/lala' && request.method == 'GET')
+        {
+            connection.query("UPDATE from_chat SET active=" + query.query.str + " WHERE id=" + query.query.id, function (err, result)
+            {
+                if (err)
+                {
+                    response.statusCode = 400;
+                    response.end("NO");                        
+                    throw err;
+                }
+                response.statusCode = 200;
+                response.end('{"status": "OK"}');
+            });             
+        }
         else if (query.pathname == '/delete' && request.method == 'GET')
         {
             let id   = parseInt(query.query.delete);
