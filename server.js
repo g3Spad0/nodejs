@@ -5,15 +5,15 @@ const api = new MgBotApiClient({
   apiVersion: 'v1'
 }).client;
 
-const php_server = 'http://192.168.1.48/node_bot/main/retail.php'
+const php_server = 'http://msg.2droida.ru/node_bot/main/retail.php'
 
 const token = 'dgfkdgfkjl09045u0dgfokjfmldasla3hui';
 
 var mysql = require('mysql');
 const connection = mysql.createConnection({
     'host': 'localhost',
-    'user': 'pmauser',
-    'password': '123456',
+    'user': 'root',
+    'password': '54Agskodgf453kewqp;1',
     'database': 'droid',
     'port': 3306
 });
@@ -276,11 +276,12 @@ function message_handler (message, dialog_id, last_dialog)
             return ;
     }
 
+    if ((num == 1 || num == 2) && arr.length < 3)
+	return ;
     if (stat)
     {
         connection.query("SELECT * FROM from_chat WHERE is_static=1", function (error, result)
         {
-    
             if (error)                      
                 throw error;
             if (!result || !result[0])
@@ -366,4 +367,4 @@ ws.on('message', function (content) {
 });
 
 
-server.listen(3001, "127.0.0.1");
+server.listen(3000, "193.164.149.8");
