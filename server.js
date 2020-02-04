@@ -196,12 +196,8 @@ function switch_dialog (dialog_id, dialog)
 
 const define_hello_from_bot =
     "Добрый день, добро пожаловать в чат магазина 2Droida. \
-    Напишите в чат команду для получения информации\
-\
-    bot 1 - для получения информации по заказу\
-    bot 2  номер квитанции (пример bot 2 1)  - для получения информации по СЦ\
-    Для остальных пунктов введите цифру команды для выполнения действия\n\n";
-
+    Напишите в чат команду для получения информации в формате:\
+    / цифра (например: \"/ 3\")\n\n";
 
 function init_first_message (dialog_id)
 {
@@ -354,11 +350,12 @@ const ws = new WebSocket(wsData.get('url'), {
 ws.on('message', function (content) {
     let event = JSON.parse(content);
 
-    // if (event.type == 'chat_created')
-    // {
-    //     init_first_message(event.data.chat.id);
-    //     return ;
-    // }
+//    if (event.type == 'chat_created')
+//    {
+//         init_first_message(event.data.chat.id);
+//         return ;
+//    }
+
     let data = event.data.message;
     if (event.type == 'message_new' && data && data.from && data.from.type != 'bot' && data.from.type != 'user')
     {
