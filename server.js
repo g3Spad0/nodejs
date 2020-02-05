@@ -268,11 +268,11 @@ function message_handler (message, dialog_id, last_dialog)
     {
         stat = parseInt(arr[2]);
 
-        if (empty_int(stat) || num < 1 || num > 2)   
+        if (empty_int(stat) || num != 1)   
             return ;
     }
 
-    if ((num == 1 || num == 2) && arr.length < 3)
+    if (num == 1 && arr.length < 3)
 	return ;
     if (stat)
     {
@@ -306,15 +306,15 @@ function message_handler (message, dialog_id, last_dialog)
             if (!result || !result[0])
                 return ;
     
-            if (num - 2 == result.length + 1)
+            if (num - 1 == result.length + 1)
             {
                 to_manager(dialog_id, last_dialog);
             }
             else
             {
-                if (num - 2 > result.length + 1 || !result[num - 3]['answer'])
+                if (num - 1 > result.length + 1 || !result[num - 2]['answer'])
                     return ;
-                send_message(dialog_id, result[num - 3]['answer']);
+                send_message(dialog_id, result[num - 2]['answer']);
                 return ;
             }
        });
@@ -328,7 +328,7 @@ function to_manager (char_id, dialog_id)
     {
         if (!result.length)
         {
-            send_message(char_id, "К сожалению, сейчас все менеджеры заняты :( Вам ответят в ближайшее время!");
+            send_message(char_id, "К сожалению, сейчас все менеджеры заняты :(\nВам ответят в ближайшее время!");
         }
         else
         {
