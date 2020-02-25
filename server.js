@@ -1,7 +1,7 @@
 var MgBotApiClient = require('mg-api-client');
 const api = new MgBotApiClient({
   host: 'https://mg-s1.retailcrm.pro',
-  token: '14150a3f95df22c35ee0ab13e3f54b2b528e9dd7861d93b324e0d86ddf55796e01f',
+  token: '0_0',
   apiVersion: 'v1'
 }).client;
 
